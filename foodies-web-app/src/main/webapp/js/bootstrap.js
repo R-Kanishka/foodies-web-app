@@ -1,8 +1,4 @@
-/*!
- * Bootstrap v4.3.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+
 (function (global, factory) {
     typeof exports === "object" && typeof module !== "undefined"
         ? factory(exports, require("jquery"), require("popper.js"))
@@ -78,22 +74,10 @@
         subClass.__proto__ = superClass;
     }
 
-    /**
-     * --------------------------------------------------------------------------
-     * Bootstrap (v4.3.1): util.js
-     * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-     * --------------------------------------------------------------------------
-     */
-    /**
-     * ------------------------------------------------------------------------
-     * Private TransitionEnd Helpers
-     * ------------------------------------------------------------------------
-     */
-
+ 
     var TRANSITION_END = "transitionend";
     var MAX_UID = 1000000;
-    var MILLISECONDS_MULTIPLIER = 1000; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
-
+    var MILLISECONDS_MULTIPLIER = 1000; 
     function toType(obj) {
         return {}.toString
             .call(obj)
@@ -107,10 +91,10 @@
             delegateType: TRANSITION_END,
             handle: function handle(event) {
                 if ($(event.target).is(this)) {
-                    return event.handleObj.handler.apply(this, arguments); // eslint-disable-line prefer-rest-params
+                    return event.handleObj.handler.apply(this, arguments); 
                 }
 
-                return undefined; // eslint-disable-line no-undefined
+                return undefined; 
             },
         };
     }
@@ -134,18 +118,14 @@
         $.fn.emulateTransitionEnd = transitionEndEmulator;
         $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
     }
-    /**
-     * --------------------------------------------------------------------------
-     * Public Util Api
-     * --------------------------------------------------------------------------
-     */
+   
 
     var Util = {
         TRANSITION_END: "bsTransitionEnd",
         getUID: function getUID(prefix) {
             do {
-                // eslint-disable-next-line no-bitwise
-                prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
+                
+                prefix += ~~(Math.random() * MAX_UID); 
             } while (document.getElementById(prefix));
 
             return prefix;
@@ -169,16 +149,16 @@
         ) {
             if (!element) {
                 return 0;
-            } // Get transition-duration of the element
+            } 
 
             var transitionDuration = $(element).css("transition-duration");
             var transitionDelay = $(element).css("transition-delay");
             var floatTransitionDuration = parseFloat(transitionDuration);
-            var floatTransitionDelay = parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
+            var floatTransitionDelay = parseFloat(transitionDelay); 
 
             if (!floatTransitionDuration && !floatTransitionDelay) {
                 return 0;
-            } // If multiple durations are defined, take the first
+            } 
 
             transitionDuration = transitionDuration.split(",")[0];
             transitionDelay = transitionDelay.split(",")[0];
@@ -193,7 +173,7 @@
         triggerTransitionEnd: function triggerTransitionEnd(element) {
             $(element).trigger(TRANSITION_END);
         },
-        // TODO: Remove in v5
+        
         supportsTransitionEnd: function supportsTransitionEnd() {
             return Boolean(TRANSITION_END);
         },
@@ -234,7 +214,7 @@
         findShadowRoot: function findShadowRoot(element) {
             if (!document.documentElement.attachShadow) {
                 return null;
-            } // Can find the shadow root otherwise it'll return the document
+            } 
 
             if (typeof element.getRootNode === "function") {
                 var root = element.getRootNode();
@@ -243,7 +223,7 @@
 
             if (element instanceof ShadowRoot) {
                 return element;
-            } // when we don't find a shadow root
+            } 
 
             if (!element.parentNode) {
                 return null;
@@ -254,11 +234,6 @@
     };
     setTransitionEndSupport();
 
-    /**
-     * ------------------------------------------------------------------------
-     * Constants
-     * ------------------------------------------------------------------------
-     */
 
     var NAME = "alert";
     var VERSION = "4.3.1";
@@ -278,23 +253,18 @@
         ALERT: "alert",
         FADE: "fade",
         SHOW: "show",
-        /**
-         * ------------------------------------------------------------------------
-         * Class Definition
-         * ------------------------------------------------------------------------
-         */
+       
     };
 
     var Alert =
-        /*#__PURE__*/
+       
         (function () {
             function Alert(element) {
                 this._element = element;
-            } // Getters
+            } 
 
             var _proto = Alert.prototype;
 
-            // Public
             _proto.close = function close(element) {
                 var rootElement = this._element;
 
@@ -314,7 +284,7 @@
             _proto.dispose = function dispose() {
                 $.removeData(this._element, DATA_KEY);
                 this._element = null;
-            }; // Private
+            }; 
 
             _proto._getRootElement = function _getRootElement(element) {
                 var selector = Util.getSelectorFromElement(element);
@@ -360,7 +330,7 @@
 
             _proto._destroyElement = function _destroyElement(element) {
                 $(element).detach().trigger(Event.CLOSED).remove();
-            }; // Static
+            };
 
             Alert._jQueryInterface = function _jQueryInterface(config) {
                 return this.each(function () {
@@ -399,22 +369,14 @@
 
             return Alert;
         })();
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
+    
 
     $(document).on(
         Event.CLICK_DATA_API,
         Selector.DISMISS,
         Alert._handleDismiss(new Alert())
     );
-    /**
-     * ------------------------------------------------------------------------
-     * jQuery
-     * ------------------------------------------------------------------------
-     */
+   
 
     $.fn[NAME] = Alert._jQueryInterface;
     $.fn[NAME].Constructor = Alert;
@@ -424,11 +386,7 @@
         return Alert._jQueryInterface;
     };
 
-    /**
-     * ------------------------------------------------------------------------
-     * Constants
-     * ------------------------------------------------------------------------
-     */
+   
 
     var NAME$1 = "button";
     var VERSION$1 = "4.3.1";
@@ -456,23 +414,19 @@
             DATA_API_KEY$1 +
             " " +
             ("blur" + EVENT_KEY$1 + DATA_API_KEY$1),
-        /**
-         * ------------------------------------------------------------------------
-         * Class Definition
-         * ------------------------------------------------------------------------
-         */
+     
     };
 
     var Button =
-        /*#__PURE__*/
+       
         (function () {
             function Button(element) {
                 this._element = element;
-            } // Getters
+            } 
 
             var _proto = Button.prototype;
 
-            // Public
+           
             _proto.toggle = function toggle() {
                 var triggerChangeEvent = true;
                 var addAriaPressed = true;
@@ -541,7 +495,7 @@
             _proto.dispose = function dispose() {
                 $.removeData(this._element, DATA_KEY$1);
                 this._element = null;
-            }; // Static
+            }; 
 
             Button._jQueryInterface = function _jQueryInterface(config) {
                 return this.each(function () {
@@ -569,11 +523,7 @@
 
             return Button;
         })();
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
+   
 
     $(document)
         .on(
@@ -601,11 +551,7 @@
                 );
             }
         );
-    /**
-     * ------------------------------------------------------------------------
-     * jQuery
-     * ------------------------------------------------------------------------
-     */
+   
 
     $.fn[NAME$1] = Button._jQueryInterface;
     $.fn[NAME$1].Constructor = Button;
@@ -615,23 +561,17 @@
         return Button._jQueryInterface;
     };
 
-    /**
-     * ------------------------------------------------------------------------
-     * Constants
-     * ------------------------------------------------------------------------
-     */
-
     var NAME$2 = "carousel";
     var VERSION$2 = "4.3.1";
     var DATA_KEY$2 = "bs.carousel";
     var EVENT_KEY$2 = "." + DATA_KEY$2;
     var DATA_API_KEY$2 = ".data-api";
     var JQUERY_NO_CONFLICT$2 = $.fn[NAME$2];
-    var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
+    var ARROW_LEFT_KEYCODE = 37;
 
-    var ARROW_RIGHT_KEYCODE = 39; // KeyboardEvent.which value for right arrow key
+    var ARROW_RIGHT_KEYCODE = 39; 
 
-    var TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
+    var TOUCHEVENT_COMPAT_WAIT = 500; 
 
     var SWIPE_THRESHOLD = 40;
     var Default = {
@@ -695,15 +635,10 @@
     var PointerType = {
         TOUCH: "touch",
         PEN: "pen",
-        /**
-         * ------------------------------------------------------------------------
-         * Class Definition
-         * ------------------------------------------------------------------------
-         */
     };
 
     var Carousel =
-        /*#__PURE__*/
+        
         (function () {
             function Carousel(element, config) {
                 this._items = null;
