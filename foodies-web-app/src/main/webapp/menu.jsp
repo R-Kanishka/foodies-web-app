@@ -57,7 +57,7 @@
               </li>
             </ul>
             <div class="user_option">
-              <a href="" class="user_link">
+              <a href="user.jsp" class="user_link">
                 <i class="fa fa-user" aria-hidden="true"></i>
               </a>
               

@@ -114,6 +114,11 @@ a:focus {
   outline: none !important;
   box-shadow: none;
 }
+.card {
+  width: 300px;
+  padding: 20px; 
+  text-align: center;        
+}
 
 /*header section*/
 .hero_area {
@@ -667,10 +672,8 @@ a:focus {
 
 }
 
-// end book section
 
 
-/* client section start */
 
 .client_section {
   .heading_container {
@@ -902,5 +905,3 @@ a:focus {
     }
   }
 }
-
-// end footer section
